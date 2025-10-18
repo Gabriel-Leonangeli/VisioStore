@@ -1,0 +1,30 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 700px;">
+    <h2 class="mb-4 text-center" style="color:#222;">Buscar Visual</h2>
+    <div class="card shadow-sm border-0 card-hover mb-4">
+        <div class="card-body">
+            <form method="get">
+                {{ form.as_p }}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-dark btn-lg btn-hover px-5">Buscar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if resultados %}
+        <h4 class="mb-3">Resultados:</h4>
+        <div class="list-group">
+            {% for visual in resultados %}
+                <div class="list-group-item list-group-item-action card-hover">
+                    <strong>{{ visual.titulo }}</strong> - {{ visual.categoria.nombre }} - {{ visual.formato.nombre }} - ${{ visual.precio }}
+                </div>
+            {% endfor %}
+        </div>
+    {% elif resultados is not None %}
+        <p>No se encontraron visuales.</p>
+    {% endif %}
+</div>
+{% endblock %}

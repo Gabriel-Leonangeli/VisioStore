@@ -1,0 +1,42 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+    <h2 class="mb-4 text-center" style="color:#222;">Crear Nueva Categoría</h2>
+    <div class="card shadow-sm border-0 card-hover">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-dark btn-lg btn-hover px-5">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-hover:hover {
+        background-color: #444;
+        transform: translateY(-2px);
+        transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+        transition: all 0.3s ease;
+    }
+    body {
+        background-color: #f9f9f9;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(200,200,200,0.05),
+            rgba(200,200,200,0.05) 1px,
+            transparent 1px,
+            transparent 20px
+        );
+        color: #333;
+    }
+</style>
+{% endblock %}

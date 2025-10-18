@@ -1,0 +1,65 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<div class="text-center mt-5" style="position: relative; z-index: 1;">
+    <h1 class="display-4 mb-3" style="color:#222;">Visio Store</h1>
+    <p class="lead mb-5" style="color:#555;">Explora y gestiona tus visuales</p>
+
+    <!-- Botones de navegación con hover -->
+    <div class="d-flex flex-wrap justify-content-center gap-4 mb-5">
+        <a href="{% url 'crear_categoria' %}" class="btn btn-dark btn-lg px-5 py-3 shadow-sm btn-hover">Nueva Categoria</a>
+        <a href="{% url 'crear_formato' %}" class="btn btn-dark btn-lg px-5 py-3 shadow-sm btn-hover">Nuevo Formato</a>
+        <a href="{% url 'crear_visual' %}" class="btn btn-dark btn-lg px-5 py-3 shadow-sm btn-hover">Nuevo Visual</a>
+        <a href="{% url 'buscar_visual' %}" class="btn btn-dark btn-lg px-5 py-3 shadow-sm btn-hover">Buscar Visual</a>
+    </div>
+</div>
+
+<h2 class="mb-4" style="color:#222; position: relative; z-index:1;">Visuales Disponibles</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4" style="position: relative; z-index:1;">
+    {% for visual in visuales %}
+        <div class="col">
+            <div class="card h-100 border-0 shadow-sm card-hover">
+                <div class="card-body">
+                    <h5 class="card-title">{{ visual.titulo }}</h5>
+                    <p class="card-text text-muted">{{ visual.descripcion|truncatechars:100 }}</p>
+                    <p class="card-text"><small class="text-muted">{{ visual.categoria.nombre }} - {{ visual.formato.nombre }}</small></p>
+                    <p class="card-text"><strong>${{ visual.precio }}</strong></p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p>No hay visuales disponibles.</p>
+    {% endfor %}
+</div>
+
+<!-- Estilos adicionales -->
+<style>
+    /* Fondo sutil con patrón */
+    body {
+        background-color: #f9f9f9;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(200,200,200,0.05),
+            rgba(200,200,200,0.05) 1px,
+            transparent 1px,
+            transparent 20px
+        );
+        color: #333;
+    }
+
+    /* Hover en botones */
+    .btn-hover:hover {
+        background-color: #444;
+        transform: translateY(-3px);
+        transition: all 0.3s ease;
+    }
+
+    /* Hover en tarjetas */
+    .card-hover:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    }
+</style>
+{% endblock %}
+

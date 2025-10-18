@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visio Store</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            background-image: repeating-linear-gradient(
+                45deg,
+                rgba(200,200,200,0.05),
+                rgba(200,200,200,0.05) 1px,
+                transparent 1px,
+                transparent 20px
+            );
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 20px;
+        }
+
+        .btn-hover:hover {
+            background-color: #444;
+            transform: translateY(-3px);
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            color: #555;
+            margin-top: 50px;
+        }
+
+        /* Navbar oscuro opcional */
+        .navbar-dark-custom {
+            background-color: #222;
+        }
+        .navbar-dark-custom .navbar-brand,
+        .navbar-dark-custom .nav-link {
+            color: #f9f9f9;
+        }
+        .navbar-dark-custom .nav-link:hover {
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar opcional, se puede ocultar en index -->
+    <nav class="navbar navbar-expand-lg navbar-dark-custom mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">Visio Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_categoria' %}">Nueva Categoria</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_formato' %}">Nuevo Formato</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_visual' %}">Nuevo Visual</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'buscar_visual' %}">Buscar</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-3">
+        &copy; 2025 Visio Store
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

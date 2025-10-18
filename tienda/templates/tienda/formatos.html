@@ -1,0 +1,18 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="max-width: 600px;">
+    <h2 class="mb-4 text-center" style="color:#222;">Crear Nuevo Formato</h2>
+    <div class="card shadow-sm border-0 card-hover">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-dark btn-lg btn-hover px-5">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
