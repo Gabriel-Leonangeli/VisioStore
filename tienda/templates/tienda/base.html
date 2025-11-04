@@ -79,7 +79,12 @@
                         <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+                        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link btn btn-link p-0" style="color: #f9f9f9; text-decoration: none;">
+                                Cerrar sesión
+                            </button>
+                        </form>
                     </li>
                 {% else %}
                     <li class="nav-item">
@@ -89,6 +94,7 @@
                         <a class="nav-link" href="{% url 'signup' %}">Registrarse</a>
                     </li>
                 {% endif %}
+
             </ul>
         </div>
     </div>

@@ -1,64 +1,97 @@
 {% extends 'tienda/base.html' %}
 {% load static %}
 {% block content %}
-<div class="signup-container">
-    <h2>Crear cuenta</h2>
 
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
+<div class="container my-5">
+    <div class="card shadow mx-auto" style="max-width: 700px;">
+        <div class="card-body p-4">
+            <h2 class="card-title text-center mb-4">Crear cuenta</h2>
 
-        {% if form.errors %}
-            <div class="alert alert-danger">
-                <strong>Ups...</strong> Por favor revisá los campos.
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                 <strong>Ups...</strong> Por favor revisá los campos.
+                 <ul class="mt-2">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li><strong>{{ field.label }}:</strong> {{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
             </div>
-        {% endif %}
+                
+                {% endif %}
 
-        <!-- Username -->
-        <div class="mb-3">
-            <label class="form-label">Nombre de usuario</label>
-            {{ form.username }}
+                <!-- Username -->
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label">Nombre de usuario</label>
+                    <div class="col-sm-8">
+                        {{ form.username }}
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label">Correo electrónico</label>
+                    <div class="col-sm-8">
+                        {{ form.email }}
+                    </div>
+                </div>
+
+                <!-- Nombre y apellido -->
+                <div class="row mb-3">
+                    <label class="col-sm-4 col-form-label">Nombre</label>
+                    <div class="col-sm-8 mb-2">
+                        {{ form.first_name }}
+                    </div>
+                    <label class="col-sm-4 col-form-label">Apellido</label>
+                    <div class="col-sm-8">
+                        {{ form.last_name }}
+                    </div>
+                </div>
+
+                <!-- Contraseña -->
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label">Contraseña</label>
+                    <div class="col-sm-8">
+                        {{ form.password1 }}
+                    </div>
+                </div>
+                <div class="row mb-3 align-items-center">
+                    <label class="col-sm-4 col-form-label">Repetir contraseña</label>
+                    <div class="col-sm-8">
+                        {{ form.password2 }}
+                    </div>
+                </div>
+
+                <!-- Avatar -->
+                <div class="row mb-4 align-items-center">
+                    <label class="col-sm-4 col-form-label">Foto de perfil</label>
+                    <div class="col-sm-8 text-center">
+                        <img src="/media/avatar/default.png"alt="Avatar preview" class="mb-2" 
+                             style="width:150px; height:150px; border-radius:50%; object-fit:cover; border:2px solid #ccc;">
+                        <div>{{ form.avatar }}</div>
+                    </div>
+                </div>
+
+                <!-- Botón -->
+                <div class="row">
+                    <div class="col-sm-12 d-grid">
+                        <button type="submit" class="btn btn-dark btn-lg">Registrarme</button>
+                    </div>
+                </div>
+
+                <p class="text-center mt-3">
+                    ¿Ya tenés cuenta? <a href="{% url 'login' %}">Iniciá sesión</a>
+                </p>
+            </form>
         </div>
-
-        <!-- Email -->
-        <div class="mb-3">
-            <label class="form-label">Correo electrónico</label>
-            {{ form.email }}
-        </div>
-
-        <!-- Nombre y apellido -->
-        <div class="row">
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Nombre</label>
-                {{ form.first_name }}
-            </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Apellido</label>
-                {{ form.last_name }}
-            </div>
-        </div>
-
-        <!-- Contraseña -->
-        <div class="mb-3">
-            <label class="form-label">Contraseña</label>
-            {{ form.password1 }}
-        </div>
-        <div class="mb-3">
-            <label class="form-label">Repetir contraseña</label>
-            {{ form.password2 }}
-        </div>
-
-        <!-- Avatar -->
-        <div class="mb-3 text-center">
-            <label class="form-label">Foto de perfil</label><br>
-            <img id="avatarPreview" src="{{ MEDIA_URL }}avatar/default.png" class="avatar-preview" alt="Avatar preview">
-            {{ form.avatar }}
-        </div>
-
-        <button type="submit" class="btn btn-custom">Registrarme</button>
-
-        <p class="mt-3 text-center">
-            ¿Ya tenés cuenta? <a href="{% url 'login' %}">Iniciá sesión</a>
-        </p>
-    </form>
+    </div>
 </div>
+
 {% endblock %}

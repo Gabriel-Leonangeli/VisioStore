@@ -1,7 +1,8 @@
-{% extends 'tienda/base.html' %}
+{% extends 'base.html' %}
+
 {% block content %}
-<div class="container text-center mt-5">
-  <h3>Sesión cerrada correctamente</h3>
-  <a href="{% url 'login' %}" class="btn btn-primary mt-3">Volver a iniciar sesión</a>
-</div>
+  <div class="logout-page">
+      <h2>Has cerrado sesión correctamente.</h2>
+      <a href="{% url 'login' %}">Iniciar sesión de nuevo</a>
+  </div>
 {% endblock %}

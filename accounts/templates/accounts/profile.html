@@ -1,12 +1,62 @@
 {% extends 'tienda/base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="container text-center mt-5">
-    <h2>Perfil de {{ user.username }}</h2>
-    <p><strong>Correo:</strong> {{ user.email }}</p>
-    <p><strong>Fecha de nacimiento:</strong> {{ user.fecha_de_nacimiento }}</p>
-    {% if user.avatar %}
-        <img src="{{ user.avatar.url }}" alt="Avatar" class="rounded-circle mt-3" width="150">
-    {% endif %}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Columna izquierda: Avatar -->
+        <div class="col-md-4 text-center">
+            <img src="{{ user.usuario.avatar.url }}" alt="Avatar" class="img-fluid rounded-circle shadow-sm" style="width: 150px; height: 150px; object-fit: cover;">
+            <h3 class="mt-3">{{ user.username }}</h3>
+            <p class="text-muted">{{ user.email }}</p>
+            <a href="{% url 'editar_perfil' %}" class="btn btn-outline-primary mt-3">Editar perfil</a>
+        </div>
+
+        <!-- Columna derecha: Info y visuales -->
+        <div class="col-md-8">
+            <!-- Botones de acción -->
+            <div class="mb-4">
+                <a href="{% url 'crear_visual' %}" class="btn btn-primary me-2">Crear Visual</a>
+                <a href="{% url 'crear_categoria' %}" class="btn btn-secondary me-2">Crear Categoría</a>
+                <a href="{% url 'crear_formato' %}" class="btn btn-info me-2">Crear Formato</a>
+                <a href="{% url 'buscar_visual' %}" class="btn btn-outline-dark me-2">Buscar Visual</a>
+                <a href="{% url 'mis_visuales' %}" class="btn btn-success">Mis Visuales</a>
+            </div>
+
+            <h4>Información personal</h4>
+            <ul class="list-group mb-4">
+                <li class="list-group-item"><strong>Nombre:</strong> {{ user.first_name }} {{ user.last_name }}</li>
+                <li class="list-group-item"><strong>Biografía:</strong> {{ user.usuario.bio|default:"Sin descripción" }}</li>
+                <li class="list-group-item"><strong>Fecha de nacimiento:</strong> {{ user.usuario.fecha_de_nacimiento|date:"d/m/Y" }}</li>
+                <li class="list-group-item"><strong>Link:</strong> 
+                    {% if user.usuario.link %}
+                        <a href="{{ user.usuario.link }}" target="_blank">{{ user.usuario.link }}</a>
+                    {% else %}
+                        No especificado
+                    {% endif %}
+                </li>
+            </ul>
+
+            <h4>Mis visuales</h4>
+            <div class="row">
+                {% if user.visual_set.all %}
+                    {% for visual in user.visuales.all %}
+                        <div class="col-md-6 mb-3">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ visual.titulo }}</h5>
+                                    <p class="card-text text-muted">{{ visual.descripcion|truncatewords:20 }}</p>
+                                    <a href="{% url 'editar_visual' visual.id %}" class="btn btn-sm btn-outline-warning">Editar</a>
+                                    <a href="{% url 'eliminar_visual' visual.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="text-muted">Todavía no subiste ninguna visual.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

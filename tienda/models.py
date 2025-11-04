@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
@@ -17,6 +19,7 @@ class Formato(models.Model):
         return f"{self.nombre} - {self.resolucion}"
     
 class Visual(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='visuales')
     titulo = models.CharField(max_length=150)
     descripcion = models.TextField()
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)

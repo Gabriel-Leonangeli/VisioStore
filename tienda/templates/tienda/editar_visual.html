@@ -1,0 +1,16 @@
+{% extends 'tienda/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Editar Visual</h2>
+    <div class="card p-4 shadow-sm">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-dark btn-hover">Guardar Cambios</button>
+                <a href="{% url 'mis_visuales' %}" class="btn btn-secondary ms-2">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

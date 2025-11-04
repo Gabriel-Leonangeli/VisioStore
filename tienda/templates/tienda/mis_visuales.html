@@ -1,0 +1,43 @@
+{% extends 'tienda/base.html' %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Mis Visuales</h2>
+
+    <div class="text-end mb-3">
+        <a href="{% url 'crear_visual' %}" class="btn btn-dark btn-hover">+ Nueva Visual</a>
+    </div>
+
+    {% if visuales %}
+        <div class="row">
+            {% for visual in visuales %}
+                <div class="col-md-4 mb-4">
+                    <div class="card card-hover h-100 shadow-sm">
+                        {% if visual.imagen %}
+                            <img src="{{ visual.imagen.url }}" class="card-img-top" alt="{{ visual.titulo }}" style="height:200px; object-fit:cover;">
+                        {% else %}
+                            <div class="bg-light text-center d-flex align-items-center justify-content-center" style="height:200px;">
+                                <span class="text-muted">Sin imagen</span>
+                            </div>
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ visual.titulo }}</h5>
+                            <p class="card-text">{{ visual.descripcion|truncatechars:100 }}</p>
+                            <p class="text-muted small mb-1">Categoría: {{ visual.categoria }}</p>
+                            <p class="text-muted small mb-1">Formato: {{ visual.formato }}</p>
+                            <p class="fw-bold mt-2">Precio: ${{ visual.precio }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="{% url 'editar_visual' visual.id %}" class="btn btn-sm btn-outline-primary me-2">Editar</a>
+                            <a href="{% url 'eliminar_visual' visual.id %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-info text-center">
+            Aún no subiste ninguna visual.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

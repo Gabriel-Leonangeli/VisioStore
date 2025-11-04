@@ -57,14 +57,3 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
             'usuario_form': usuario_form
         })
 
-def signup_view(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Tu cuenta se creó con éxito. Ya podés iniciar sesión.')
-            return redirect('login')
-    else:
-        form = UserRegisterForm()
-    return render(request, 'registration/signup.html', {'form': form})
-

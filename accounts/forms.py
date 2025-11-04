@@ -19,10 +19,10 @@ class SignupForm(UserCreationForm):
         user.last_name = self.cleaned_data['last_name']
         if commit:
             user.save()
-            profile = user.profile
+            profile, created = Usuario.objects.get_or_create(user=user)
             if self.cleaned_data.get('avatar'):
-                user.profile.avatar = self.cleaned_data['avatar']
-                user.profile.save()
+                profile.avatar = self.cleaned_data['avatar']
+            profile.save()
         return user
 
 class UserEditForm(forms.ModelForm):
