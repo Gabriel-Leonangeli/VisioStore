@@ -39,7 +39,7 @@
             margin-top: 50px;
         }
 
-        /* Navbar oscuro opcional */
+       
         .navbar-dark-custom {
             background-color: #222;
         }
@@ -54,31 +54,53 @@
 </head>
 <body>
 
-    <!-- Navbar opcional, se puede ocultar en index -->
-    <nav class="navbar navbar-expand-lg navbar-dark-custom mb-4">
-        <div class="container">
-            <a class="navbar-brand" href="{% url 'index' %}">Visio Store</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_categoria' %}">Nueva Categoria</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_formato' %}">Nuevo Formato</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'crear_visual' %}">Nuevo Visual</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'buscar_visual' %}">Buscar</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    
+<nav class="navbar navbar-expand-lg navbar-dark-custom mb-4">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'index' %}">Visio Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <!-- Contenido principal -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <!-- Enlaces principales -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about' %}">Acerca de</a>
+                </li>
+
+                <!-- Enlaces de autenticación -->
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'profile' %}">Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'signup' %}">Registrarse</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
     <div class="container">
         {% block content %}
         {% endblock %}
     </div>
 
-    <!-- Footer -->
+
     <footer class="text-center py-3">
         &copy; 2025 Visio Store
     </footer>

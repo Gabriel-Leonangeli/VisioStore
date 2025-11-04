@@ -1,18 +1,36 @@
 {% extends 'tienda/base.html' %}
 
 {% block content %}
-<div class="text-center mt-5" style="position: relative; z-index: 1;">
-    <h1 class="display-4 mb-3" style="color:#222;">Visio Store</h1>
-    <p class="lead mb-5" style="color:#555;">Explora y gestiona tus visuales</p>
-
-    <!-- Botones de navegación con hover -->
-    <div class="d-flex flex-wrap justify-content-center gap-4 mb-5">
-        <a href="{% url 'crear_categoria' %}" class="btn btn-dark btn-lg px-5 py-3 shadow-sm btn-hover">Nueva Categoria</a>
-        <a href="{% url 'crear_formato' %}" class="btn btn-dark btn-lg px-5 py-3 shadow-sm btn-hover">Nuevo Formato</a>
-        <a href="{% url 'crear_visual' %}" class="btn btn-dark btn-lg px-5 py-3 shadow-sm btn-hover">Nuevo Visual</a>
-        <a href="{% url 'buscar_visual' %}" class="btn btn-dark btn-lg px-5 py-3 shadow-sm btn-hover">Buscar Visual</a>
+<div class="text-center mb-5">
+    <div style="background-color: #eaeaea; padding: 40px; border-radius: 8px;">
+        <h1>Bienvenido a Visio Store</h1>
+        <p style="max-width: 700px; margin: 20px auto;">
+            Visio Store es una plataforma donde podés explorar, compartir y descargar visuales para shows, eventos y proyectos audiovisuales. 
+            Si iniciás sesión, vas a poder subir tus propios visuales, editarlos o eliminarlos.
+        </p>
+        {% if not user.is_authenticated %}
+            <a href="{% url 'login' %}" class="btn btn-dark mt-3">Iniciar sesión</a>
+        {% endif %}
     </div>
 </div>
+
+<h2 class="mb-3 text-center">Visuales Disponibles</h2>
+
+<div class="row">
+    {% for visual in visuales %}
+        <div class="col-md-4 mb-4">
+            <div class="card card-hover">
+                <div class="card-body">
+                    <h5 class="card-title">{{ visual.titulo }}</h5>
+                    <p class="card-text">{{ visual.descripcion }}</p>
+                </div>
+            </div>
+        </div>
+    {% empty %}
+        <p class="text-center">No hay visuales disponibles aún.</p>
+    {% endfor %}
+</div>
+{% endblock %}
 
 <h2 class="mb-4" style="color:#222; position: relative; z-index:1;">Visuales Disponibles</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4" style="position: relative; z-index:1;">
@@ -29,7 +47,7 @@
         </div>
     {% empty %}
         <p>No hay visuales disponibles.</p>
-    {% endfor %}
+
 </div>
 
 <!-- Estilos adicionales -->
@@ -61,5 +79,5 @@
         transition: all 0.3s ease;
     }
 </style>
-{% endblock %}
+{% endfor %}
 

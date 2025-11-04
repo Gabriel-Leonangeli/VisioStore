@@ -1,0 +1,12 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2>Perfil de {{ user.username }}</h2>
+    <p><strong>Correo:</strong> {{ user.email }}</p>
+    <p><strong>Fecha de nacimiento:</strong> {{ user.fecha_de_nacimiento }}</p>
+    {% if user.avatar %}
+        <img src="{{ user.avatar.url }}" alt="Avatar" class="rounded-circle mt-3" width="150">
+    {% endif %}
+</div>
+{% endblock %}

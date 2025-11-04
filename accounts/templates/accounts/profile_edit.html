@@ -1,0 +1,14 @@
+{% extends 'tienda/base.html' %}
+{% block content %}
+<div class="container col-md-8 offset-md-2">
+  <h2>Editar perfil</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h5>Datos del usuario</h5>
+    {{ user_form.as_p }}
+    <h5>Información adicional</h5>
+    {{ usuario_form.as_p }}
+    <button type="submit" class="btn btn-success">Guardar cambios</button>
+  </form>
+</div>
+{% endblock %}

@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect
 from .models import Categoria, Formato, Visual
 from .forms import CategoriaForm, FormatoForm, VisualForm, BuscarVisualForm
 
-# Inicio
+
 def index(request):
     visuales = Visual.objects.all()
     return render(request, 'tienda/index.html', {'visuales': visuales})
 
-# Categoria
+
 def crear_categoria(request):
     if request.method == 'POST':
         form = CategoriaForm(request.POST)
@@ -18,7 +18,6 @@ def crear_categoria(request):
         form = CategoriaForm()
     return render(request, 'tienda/categorias.html', {'form': form})
 
-# Formato
 def crear_formato(request):
     if request.method == 'POST':
         form = FormatoForm(request.POST)
@@ -29,7 +28,7 @@ def crear_formato(request):
         form = FormatoForm()
     return render(request, 'tienda/formatos.html', {'form': form})
 
-# Visual
+
 def crear_visual(request):
     if request.method == 'POST':
         form = VisualForm(request.POST)
@@ -40,7 +39,7 @@ def crear_visual(request):
         form = VisualForm()
     return render(request, 'tienda/visuales.html', {'form': form})
 
-# Buscador
+
 def buscar_visual(request):
     resultados = []
     if request.method == 'GET':
@@ -51,3 +50,7 @@ def buscar_visual(request):
     else:
         form = BuscarVisualForm()
     return render(request, 'tienda/buscar.html', {'form': form, 'resultados': resultados})
+
+def about(request):
+    return render(request, 'tienda/about.html')
+
