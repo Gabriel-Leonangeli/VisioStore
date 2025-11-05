@@ -1,0 +1,94 @@
+🧭 Guía de uso — Visio Store
+
+Bienvenido a Visio Store, una plataforma creada por Gabriel Leonangeli para gestionar y compartir visuales, categorías y formatos.
+Pensada tanto para VJs como para artistas digitales que buscan mantener orden y estética en sus proyectos.
+
+🧑‍💻 1. Registro e inicio de sesión
+
+Si sos nuevo, hacé clic en “Registrarse” en la barra superior.
+
+Completá los datos de usuario y contraseña.
+
+Luego, iniciá sesión con tus credenciales desde “Iniciar sesión”.
+
+Una vez logueado, verás tu perfil con toda tu información y herramientas de creación.
+
+🪪 2. Tu perfil
+
+Desde tu perfil podés:
+
+Ver tu foto de avatar, nombre y biografía.
+
+Editar tus datos desde el botón “Editar perfil”.
+
+Acceder a tus herramientas de creación con los siguientes botones:
+
+Botón	Función
+🎨 Crear Visual	Subí una nueva visual (imagen, video, animación, etc.) con su descripción, categoría y formato.
+🧩 Crear Categoría	Creá una categoría nueva para organizar tus visuales.
+🖼️ Crear Formato	Definí formatos personalizados con resoluciones específicas.
+🔍 Buscar Visual	Buscá visuales por título dentro del catálogo general.
+📁 Mis Visuales	Accedé a una vista con todas las visuales que vos mismo creaste.
+🧠 3. Crear visuales
+
+Entrá a “Crear Visual”.
+
+Completá el formulario con:
+
+Título
+
+Descripción
+
+Categoría
+
+Formato
+
+Precio (opcional)
+
+Guardá y automáticamente quedará registrada en tu lista personal de visuales.
+
+🛠️ 4. Gestionar tus visuales
+
+En la sección “Mis Visuales”, vas a poder:
+
+✏️ Editar cualquier visual creada por vos.
+
+🗑️ Eliminar aquellas que ya no quieras mostrar.
+
+Ver la fecha de publicación y la categoría/formato asignados.
+
+Solo vos podés modificar o borrar tus propios elementos, garantizando la privacidad y control total.
+
+🧩 5. Categorías y formatos
+
+Estas secciones sirven para clasificar tus visuales:
+
+Categoría: agrupa tus visuales por tipo o estilo (ej. Abstracto, Urbano, Psicodélico).
+
+Formato: define la resolución o tipo de archivo (ej. FullHD, 4K, Loop vertical).
+
+Podés crear las que necesites desde tu perfil.
+
+🔍 6. Buscar visuales
+
+Desde el botón “Buscar Visual”, escribí el título (o parte del título) y el sistema te mostrará coincidencias.
+
+Ideal si querés navegar entre distintos contenidos subidos por vos o por otros usuarios (si lo habilitás más adelante).
+
+🧭 7. Navegación general
+
+Desde la barra superior podés moverte fácilmente entre:
+
+🏠 Inicio: muestra todas las visuales publicadas.
+
+🙋‍♂️ Perfil: tu espacio personal y herramientas.
+
+ℹ️ Acerca de: información sobre el proyecto.
+
+🚪 Cerrar sesión: termina tu sesión de usuario.
+
+💬 8. Contacto y soporte
+
+📧 leonangeli.gl@gmail.com
+
+🐙 GitHub: https://github.com/Gabriel-Leonangeli
